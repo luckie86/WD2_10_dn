@@ -16,7 +16,7 @@ class TopicDetailsTests(unittest.TestCase):
     def setUp(self):
         app = webapp2.WSGIApplication(
             [
-                webapp2.Route('/topic/<topic_id:\d+>', TopicDetailsHandler, name="topic-details"),
+                webapp2.Route('/topic/<topic_id:\d+>', TopicDetailsHandler),
             ])
 
         self.testapp = webtest.TestApp(app)
