@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block naslov %} Glavna stran {% endblock %}
+
+
+{% block vsebina %}
+
+<div class="jumbotron">
+    <h1> Ninja Tech Forum </h1>
+    <p>Welcome to Ninja Tech Forum. Coming soon! </p>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+        <th> Title:</th>
+        <th> Updated: </th>
+        <th> Author Email: </th>
+    </tr>
+
+{% for topic in topics|sort(attribute='created', reverse = True) %}
+      <tr>
+          <td> <a href="/topic-details/{{ topic.key.id() }}"> {{ topic.title }}</a></td>
+          <td> {{ topic.updated }} </td>
+          <td> {{ topic.author_email }} </td>
+      </tr>
+{% endfor %}
+
+  </table>
+</div>
+
+    <button id="testni-gumb">Testni gumb</button>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    $(document).ready(function () {
+        console.log("Izpis preko JS.");
+        var name = "Luka";
+        if (name === "Luka"){
+            console.log("Pozdravljen, Luka");
+         }   else {
+            console.log("Pozdravljen neznanec");
+            }
+        function izpis (text) {
+            console.log(text);
+        }
+        izpis("Klic funkcije izpis");
+
+        var seznam = ["abc", 23, false];
+        seznam.forEach(function(element) {
+           console.log(element)
+        });
+
+        $("h1").css("color", "red");
+
+        $("#testni-gumb").click(function () {
+           console.log("Klik Gumba");
+           var glava = $("h1")
+           glava.css("font-size", "20px");
+           $("body").css("background-color", "green");
+           glava.hide();
+        });
+
+    }) ;
+</script>
+
+{% endblock %}
