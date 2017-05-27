@@ -8,5 +8,5 @@ class DeleteCommentsCron(BaseHandler):
         dt_delete_to = datetime.datetime.now() - datetime.timedelta(days=30)
         deleted_comments = Comment.query(Comment.deleted == True, Comment.created <= dt_delete_to).fetch()
 
-        for commment in deleted_comments:
-            commment.key.delete()
+        for comment in deleted_comments:
+            comment.key.delete()
